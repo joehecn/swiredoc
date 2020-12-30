@@ -1,7 +1,7 @@
 module.exports = {
   theme:"antdocs",
-  title: "VuePress-Creator",
-  description: "A lightweight creator for VuePress project.",
+  title: "Swire-Docs",
+  description: "A Documention for Swire project.",
   base: "/swiredoc/",
   head: [
     ["link",{ rel: "icon",href: "/assets/logo.png" }]
