@@ -1,0 +1,35 @@
+@startmindmap chart
+* EnerMon
+** Dashboard
+*** collections
+**** dashboards
+**** radatas
+**** coolingloads
+*** tab1 - HK Portfolio
+**** getChartB
+**** getChartB2
+**** getChartCYearly2
+**** getChartCMonthly1
+**** getChartCMonthly2
+**** getChartCYearly(1)
+**** getChartCYearly(2)
+**** getChartDYearlyWS
+**** getChartDMonthlyWS1
+**** getChartDMonthlyWS2
+**** getChartF
+*** tab2 - KPI
+**** getKpiYearly
+**** getKpiMonthly1
+**** getKpiMonthly2
+*** tab3 - Data Comparison
+**** getChartEYearly
+**** getChartEMonthly
+** Analysis
+*** collections
+**** chillermonths
+**** chillerdays
+**** chillerhours
+**** kwhmonths
+**** kwhdays
+**** kwhhours
+@endmindmap
