@@ -9,4 +9,8 @@ module.exports = [
     text: "指南",
     link: "/category/"
   },
+  {
+    text: "开发者",
+    link: "/development/"
+  }
 ];

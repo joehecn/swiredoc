@@ -1,0 +1,25 @@
+@startuml meter1
+|EnerMon - Energy|
+:用户修改电表
+- 添加、替换、停用
+- 改变类别;
+|#AntiqueWhite|Kafka 消息队列|
+-[#black,dotted]-> send msg;
+:msg - partition1;
+-[#green,dotted]-> on msg;
+|Windows - Schedule|
+:压入队列
+先进先出
+顺序执行;
+:UpdateDashboard;
+:UpdateKwhhour;
+:UpdateKwhday;
+:UpdateKwhmonth;
+|#AntiqueWhite|Kafka 消息队列|
+-[#black,dotted]-> send msg;
+:msg - partition2;
+-[#green,dotted]-> on msg;
+|EnerMon - Energy|
+:监听消息;
+:把反馈结果通知用户;
+@enduml
