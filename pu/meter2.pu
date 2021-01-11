@@ -1,0 +1,20 @@
+
+@startuml meter2
+  start
+  :用户编辑一条记录;
+  if (是否需要重算?) then (yes)
+    :标示状态为 - 草稿
+    写入 History;
+    (A)
+    detach
+    (A)
+    :用户按大楼重新计算;
+    :通知用户进度:
+    - 排队中
+    - 进行中;
+    stop
+  else (no)
+    :直接修改;
+    stop
+  endif
+@enduml
