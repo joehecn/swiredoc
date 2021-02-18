@@ -6,8 +6,8 @@ title: 测试环境
 
 ## 两台服务器
 分别模拟云端和本地window
-- 云端: 8.210.238.93
-- 本地:
+- 云端: 8.210.238.93(172.31.0.6)
+- 本地: 8.210.97.134(172.31.0.7)
 
 ## 云端: 8.210.238.93
 | PORTS                                              | NAMES                    |
@@ -97,7 +97,7 @@ docker system prune -a -f --volumes
 docker system prune -a --volumes
 ```
 ### energydb1
-``` mongo
+``` bash
 ssh -i /Users/hemiao/pem/me.pem root@8.210.238.93
 
 docker run -d -p 27017:27017 -v /"$PWD"/backups:/backups --name energydb -e MONGO_INITDB_ROOT_USERNAME=GDPfcXs6IkpMTgZ8yys -e MONGO_INITDB_ROOT_PASSWORD=UDJMgKsbhC7ulyjWk mongo
@@ -115,6 +115,9 @@ docker exec -it mongo \
 8.210.238.93:37017
 
 docker exec -it mongo mongo
+
+mongodump -u OjE1NTU2ND -p E4MTE5MjI2M3 -d swire -o /backups
+mongorestore -u OjE1NTU2ND -p E4MTE5MjI2M3 -d swire /backups/swire
 
 scp -i /Users/hemiao/pem/me.pem /Users/hemiao/dockermongo/backups/meterinfos.json root@8.210.238.93:/root/energydb/backups
 mongoimport -d swire -c meterinfos --file /backups/meterinfos.json --drop
@@ -136,6 +139,57 @@ docker build -t joe/kafka_sync_mongo:1.0.0 .
 docker run -d -v /"$PWD"/src:/server/src --network mega-net --name kafka_sync_mongo -e NODE_ENV=server joe/kafka_sync_mongo:1.0.0
 ```
 ### energy
+```
+scp -i /Users/hemiao/pem/me.pem  -r /Users/hemiao/fusquare/projects/swire/energy/app root@8.210.238.93:/root/energy
+scp -i /Users/hemiao/pem/me.pem  -r /Users/hemiao/fusquare/projects/swire/energy/config root@8.210.238.93:/root/energy
+scp -i /Users/hemiao/pem/me.pem /Users/hemiao/fusquare/projects/swire/energy/package.json root@8.210.238.93:/root/energy
+scp -i /Users/hemiao/pem/me.pem /Users/hemiao/fusquare/projects/swire/energy/app.js root@8.210.238.93:/root/energy
+scp -i /Users/hemiao/pem/me.pem /Users/hemiao/fusquare/projects/swire/energy/Dockerfile root@8.210.238.93:/root/energy
+ssh -i /Users/hemiao/pem/me.pem root@8.210.238.93
+
+cd energy
+docker build -t joe/energy:1.0.0 .
+docker run -d -p 80:7033 -v /"$PWD"/app:/energy/app -v /"$PWD"/config:/energy/config --env DB_HOST=energydb1 --network mega-net --name energy joe/energy:1.0.0
+```
 ### else
 - check-mongo-online
 - check-mongo-local
+
+## 模拟 windows 本地: 8.210.97.134
+| PORTS                                              | NAMES                    |
+| -------------------------------------------------- | ------------------------:|
+|                                                    | kafka_sync_mongo         |
+| 0.0.0.0:80->7033/tcp                               | energy                   |
+|                                                    | check-mongo-online       |
+|                                                    | check-mongo-local        |
+| 0.0.0.0:37017->27017/tcp                           | energydb1                |
+| 0.0.0.0:27017->9092/tcp                            | kafka-docker_kafka_1     |
+| 22/tcp, 2888/tcp, 3888/tcp, 0.0.0.0:2181->2181/tcp | kafka-docker_zookeeper_1 |
+
+### dockermongo
+``` bash
+scp -i /Users/hemiao/pem/me.pem /Users/hemiao/pem/me.pem root@8.210.238.93:/root/energydb/backups
+ssh -i /Users/hemiao/pem/me.pem root@8.210.238.93
+
+scp -i /root/energydb/backups/me.pem -r /root/energydb/backups/swire root@8.210.97.134:/root/dockermongo/backups
+scp -i /root/energydb/backups/me.pem -r /root/energydb/backups/swire root@172.31.0.7:/root/dockermongo/backups
+ssh -i /Users/hemiao/pem/me.pem root@8.210.97.134
+
+tar -xzvf swire.tar.gz
+tar -zcvf swire.tar.gz swire
+
+docker exec -it tdb1 mongo
+mongorestore -u e700191fad1c -p 5caee23e86 --authenticationDatabase admin -d swire /backups/swire
+
+```
+
+``` bash
+# Install Docker
+scp -i /Users/hemiao/pem/me.pem /Users/hemiao/fusquare/projects/swire/energy/docs/fun/docker.sh root@47.242.32.120:/root
+
+ssh -i /Users/hemiao/pem/me.pem root@47.242.32.120
+
+chmod 777 docker.sh
+./docker.sh
+
+```
