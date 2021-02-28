@@ -8,4 +8,7 @@ module.exports = [
   'article-6',
   'article-7',
   'article-8',
+  'article-9',
+  'article-10',
+  'article-11',
 ]
