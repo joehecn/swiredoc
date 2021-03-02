@@ -1,0 +1,45 @@
+@startuml edit meter
+|EnerMon - Energy|
+:用户添加电表;
+
+:controller/meter.js
+update();
+
+:service/meterInfo.js
+update()
+
+新建一个 meter;
+
+:service/map.js
+create()
+
+map._id 就是 draft;
+
+:service/meterInfo.js
+update()
+
+update drafts;
+|#AntiqueWhite|Kafka - 消息队列|
+-[#black,dotted]-> send three msg;
+:topic: 'msg', partition: 1
+
+insert meterinfos
+insert maps
+update meterinfos;
+-[#green,dotted]-> on msg;
+|Windows - Schedule|
+:压入队列
+先进先出
+顺序执行;
+:UpdateDashboard;
+:UpdateKwhhour;
+:UpdateKwhday;
+:UpdateKwhmonth;
+|#AntiqueWhite|Kafka 消息队列|
+-[#black,dotted]-> send msg;
+:msg - partition2;
+-[#green,dotted]-> on msg;
+|EnerMon - Energy|
+:监听消息;
+:把反馈结果通知用户;
+@enduml

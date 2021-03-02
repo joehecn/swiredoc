@@ -4,6 +4,12 @@ title: 电表管理 - 其它相关功能
 
 # 电表管理 - 其它相关功能
 
+## 重算
+
+<img :src="$withBase('/img/c12-1.png')" alt="list">
+
+<img :src="$withBase('/img/c12-2.png')" alt="list">
+
 ## History
 按每个修改条目的创建时间倒序展示:
 - 谁修改的
