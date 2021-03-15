@@ -16,6 +16,7 @@ title: Swire-Docs
 - <a-checkbox>新增 Download history 按钮，放到侧边栏抽屉;</a-checkbox>
 - <a-checkbox>电表分类(included in submain) -> 标记 deaded;</a-checkbox>
 - <a-checkbox>OIE 多行电表相同的处理;（101020250，101020255）只能编辑第一行，同时修改</a-checkbox>
+- <a-checkbox>各种版面文字修改，详细看 email</a-checkbox>
 - <a-checkbox>Download excel 按钮;</a-checkbox>
 <img :src="$withBase('/img/c0-01.jpg')" alt="list">
 
