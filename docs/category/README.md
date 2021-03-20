@@ -16,7 +16,7 @@ title: Swire-Docs
 - <a-checkbox>新增 Download history 按钮，放到侧边栏抽屉;</a-checkbox>
 - <a-checkbox>电表分类(included in submain) -> 标记 deaded;</a-checkbox>
 - <a-checkbox>OIE 多行电表相同的处理;（101020250，101020255）只能编辑第一行，同时修改</a-checkbox>
-- 各种版面文字修改，详细看 [03122021 EDAT meter management - comment.pptx](/docs/03122021&#32;EDAT&#32;meter&#32;management&#32;-&#32;comment.pptx)
+- 各种版面文字修改，详细看 [03122021 EDAT meter management - comment.pptx](/swiredoc/docs/03122021&#32;EDAT&#32;meter&#32;management&#32;-&#32;comment.pptx)
   - page 1
     - <a-checkbox checked>Add Filter Function</a-checkbox>
 
