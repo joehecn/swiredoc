@@ -12,4 +12,5 @@ module.exports = [
   'article-10',
   'article-11',
   'article-12',
+  'article-13',
 ]

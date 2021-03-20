@@ -16,8 +16,44 @@ title: Swire-Docs
 - <a-checkbox>新增 Download history 按钮，放到侧边栏抽屉;</a-checkbox>
 - <a-checkbox>电表分类(included in submain) -> 标记 deaded;</a-checkbox>
 - <a-checkbox>OIE 多行电表相同的处理;（101020250，101020255）只能编辑第一行，同时修改</a-checkbox>
-- <a-checkbox>各种版面文字修改，详细看 email</a-checkbox>
-- <a-checkbox>Download excel 按钮;</a-checkbox>
+- 各种版面文字修改，详细看 [03122021 EDAT meter management - comment.pptx](/docs/03122021&#32;EDAT&#32;meter&#32;management&#32;-&#32;comment.pptx)
+  - page 1
+    - <a-checkbox checked>Add Filter Function</a-checkbox>
+
+    <img :src="$withBase('/img/c0-02.png')" alt="list">
+
+    - <a-checkbox checked>所有任务 -> Task List</a-checkbox>
+  - page 2
+    - <a-checkbox checked>Add Legend</a-checkbox>
+    - <a-checkbox checked>Add Remark</a-checkbox>
+    - <a-checkbox checked>基础属性,电表相关 -> Description, Calculation Info</a-checkbox>
+    - <a-checkbox checked>Meter status: Live/Dead</a-checkbox>
+    - <a-checkbox checked>虚拟电表 -> Virtual Meter</a-checkbox>
+    - <a-checkbox checked>Effective -> Effective Date</a-checkbox>
+    - <a-checkbox checked>Singtime -> Effective Date</a-checkbox>
+    - <a-checkbox checked>SubBuilding -> Zone</a-checkbox>
+  - page 3
+    - <a-checkbox checked>Add icon “?”</a-checkbox>
+    - <a-checkbox checked>Add New -> New meter</a-checkbox>
+    - <a-checkbox checked>EBuilding -> Building</a-checkbox>
+    - <a-checkbox checked>Meter -> Meter ID</a-checkbox>
+    - <a-checkbox checked>下拉菜单顺序</a-checkbox>
+  - page 4
+    - <a-checkbox checked>Add icon “?”</a-checkbox>
+    - <a-checkbox checked>Category reorder</a-checkbox>
+
+  - page 5
+    - <a-checkbox checked>回到电表管理 -> Back</a-checkbox>
+    - <a-checkbox checked>Effective -> Recalculation Start Date</a-checkbox>
+    - <a-checkbox checked>Time -> Task Creation Date</a-checkbox>
+    - <a-checkbox checked>Task's Historys -> Task List</a-checkbox>
+    - <a-checkbox checked>Display date&time</a-checkbox>
+    - <a-checkbox checked>通知 -> Notification</a-checkbox>
+    - <a-checkbox checked>状态标签</a-checkbox>
+  - page 6
+    - <a-checkbox checked>侧边导航换三个自定义图标</a-checkbox>
+      
+- <a-checkbox checked>Download excel 按钮;</a-checkbox>
 <img :src="$withBase('/img/c0-01.jpg')" alt="list">
 
 ## 问题

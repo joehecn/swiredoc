@@ -17,4 +17,11 @@ module.exports = {
     repo: "https://github.com/joehecn/swiredoc",
     editLinks: false,
   },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@docs': 'public/docs'
+      }
+    }
+  }
 };
