@@ -22,14 +22,14 @@ title: 电表管理 - Edit (5 废弃电表)
 ## 3. 目测表格对应条目
 - 字段有变化
 - Effective: 2020-02-01
-- Status: `草稿` `Deaded`
+- Status: `草稿` `Dead`
 
 <img :src="$withBase('/img/c9-3.png')" alt="list">
 
 ## 4. 再次打开`Edit`框
 - 再次点击`Edit`按钮, 打开编辑框, 然后选择`电表相关`选项卡
 - 发现多了一个红色的`节点`，标签`Draft`表明当前节点是一个草稿节点
-- `Deaded` 表明当前节点被废弃了
+- `Dead` 表明当前节点被废弃了
 
 <img :src="$withBase('/img/c9-4.png')" alt="list">
 
