@@ -10,6 +10,10 @@ module.exports = [
     link: "/category/"
   },
   {
+    text: "算法",
+    link: "/algorithm/"
+  },
+  {
     text: "开发者",
     link: "/development/"
   }

@@ -1,0 +1,92 @@
+@startuml Collections
+' kwhs
+abstract kwhs {}
+map kwhs.rawKwh {
+  step1 => ImportRawKwhToKwh
+}
+map kwhs.processedKwh {
+  step2 => UpdateProcessedKwhToKwh
+}
+
+' monthkwhs
+abstract monthkwhs {}
+map monthkwhs.processedNumber {
+  step3 => UpdateProcessedNumberToMonthKwh
+}
+map monthkwhs.patchedNumber {
+  step4 => UpdatePatchedNumberToMonthKwh
+}
+
+diamond d1
+
+' chillerhours
+abstract chillerhours {}
+map chillerhours.coolingLoad {
+  step5 => ImportTxtChillerdata
+  step6 => ImportExcelChillerdata
+  step7 => Import3PPChillerdata
+  step8 => ImportHERChillerdata
+}
+map chillerhours.R2 {
+  step9 => UpdateR2ToChillerHour
+}
+
+map chillerdays {
+  step10 => UpdateChillerday
+}
+
+map chillermonths {
+  step11 => UpdateChillermonth
+}
+
+diamond d2
+
+map ratios {
+  step12 => ImportExcelRatio
+  step13 => ImportSqlRatio
+}
+
+map coolingloads {
+  step14 => UpdateCoolingLoad
+}
+
+map dashboards {
+  step15 => UpdateDashboard
+}
+
+map kwhhours {
+  step16 => UpdateKwhhour
+}
+
+map kwhdays {
+  step17 => UpdateKwhday
+}
+
+map kwhmonths {
+  step18 => UpdateKwhmonth
+}
+
+' kwhs *-> kwhs.rawKwh
+' kwhs *-> kwhs.processedKwh
+' monthkwhs *-> monthkwhs.processedNumber
+' monthkwhs *-> monthkwhs.patchedNumber
+' chillerhours *-> chillerhours.coolingLoad
+' chillerhours *-> chillerhours.R2
+
+kwhs.rawKwh --o kwhs.processedKwh
+kwhs.processedKwh --o monthkwhs.processedNumber
+monthkwhs.processedNumber --o monthkwhs.patchedNumber
+chillerhours.coolingLoad --o d1
+kwhs.rawKwh --o d1
+d1 --o chillerhours.R2
+chillerhours.R2 --o chillerdays
+chillerhours.R2 --o chillermonths
+monthkwhs.patchedNumber --o d2
+chillermonths --o d2
+d2 --o ratios
+d2 --o coolingloads
+ratios --o dashboards
+ratios --o kwhhours
+ratios --o kwhdays
+ratios --o kwhmonths
+@enduml

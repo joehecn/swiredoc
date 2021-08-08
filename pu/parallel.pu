@@ -1,0 +1,20 @@
+@startuml parallel
+start
+fork
+: step1;
+  fork
+  :A;
+  fork again
+  : step5;
+  end fork
+fork again
+: step5;
+fork again
+: step6;
+fork again
+: step7;
+fork again
+: step8;
+endfork
+stop
+@enduml

@@ -1,5 +1,5 @@
 module.exports = [
-  '/development/',
+  '/algorithm/',
   'article-1',
   'article-2',
   'article-3',
