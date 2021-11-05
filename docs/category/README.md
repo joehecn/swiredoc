@@ -1,76 +1,51 @@
 ---
-title: Swire 指南
+title: 重算功能说明-20211107
 ---
 
-# Swire 指南
+# Manual Patching
+## 功能
+批量修改如下所示的各种数据原始值，提交系统重算相关统计数据
+- Meter: RawKwh
+- Ratio
+- Chiller: FlowRate, ReturnTemp, SupplyTemp, Cwet, Cwlt, Tc, Te, Tcb, Teb
 
-## TODO LIST
-- <a-checkbox checked><Badge text="4-15"/> Deaded -> Dead</a-checkbox>
-- <a-checkbox checked><Badge text="4-15"/> Excel导出电表, Effective Date: 日期格式化</a-checkbox>
-- <a-checkbox checked><Badge text="3-22"/> Begin date -> Start date</a-checkbox>
-- <a-checkbox checked><Badge text="3-22"/> Meter ID: add icon ?</a-checkbox>
-<img width="300px" :src="$withBase('/img/c0-04.jpeg')" alt="list">
+## 流程
 
-- <a-checkbox checked>2020 RA Data;</a-checkbox>
-- <a-checkbox>Chiller Alarm 报表: Latest available date 是文档的最后修改时间;</a-checkbox>
-- <a-checkbox>Chiller Alarm 报表: 漏报错误;</a-checkbox>
-- <a-checkbox>导入 txt, excel 的 chiller 数据时，每一行的每个单元格都要检查，所有异常报警;</a-checkbox>
-- <a-checkbox><Badge text="暂时" type="warning"/> Dashboard, Analysis, Alarm email, Meter management 读写权限;</a-checkbox>
-  - Meter mamagement 中: 暂时设定只有 admin 可以查看编辑以及重算;
+<img :src="$withBase('/pu/patching.svg')" alt="list">
 
-  <img width="600px" :src="$withBase('/img/c0-03.jpeg')" alt="list">
+## 重算 Meter
+<img :src="$withBase('/img/00-01.jpg')" alt="list">
 
-- <a-checkbox>关于重新计算的通知email (接收者: 点击了重算按钮的人, Admin);</a-checkbox>
-- <a-checkbox>手动修改电表的原始读数;</a-checkbox>
-- <a-checkbox checked><Badge text="3-22"/> 优先处理, 通知栏 等待中进行中合并; (逻辑: 如果没有排队就直接发送进行中);</a-checkbox>
-- <a-checkbox checked><Badge text="3-22"/> 优先处理, 新增 Download history 按钮，放到侧边栏抽屉;</a-checkbox>
-- <a-checkbox><Badge text="3-22"/> 正式环境上线之前必须解决, 电表分类(included in submain) -> 标记 dead;</a-checkbox>
-- <a-checkbox><Badge text="暂时" type="warning"/> OIE 多行电表相同的处理;( 101020250, 101020255 ) 只能编辑第一行，同时修改</a-checkbox>
-  - 暂时锁定不能编辑
-- 各种版面文字修改，详细看 [03122021 EDAT meter management - comment.pptx](/swiredoc/docs/03122021&#32;EDAT&#32;meter&#32;management&#32;-&#32;comment.pptx)
-  - page 1
-    - <a-checkbox><Badge text="暂时" type="warning"/> Add Filter Function</a-checkbox>
-      - 暂时只能过滤 Meter name, old meter, category, zone;
-      - <Badge text="3-22"/> 疑惑: Transformer 用 search 还是 filter ?
-    - <a-checkbox checked>Add Remark</a-checkbox>
-    - <a-checkbox checked>基础属性,电表相关 -> Description, Calculation Info</a-checkbox>
-    - <a-checkbox checked><Badge text="3-22"/> Meter status: Live/Dead</a-checkbox>
-    - <a-checkbox checked>虚拟电表 -> Virtual Meter</a-checkbox>
-    - <a-checkbox checked>Effective -> Effective Date</a-checkbox>
-    - <a-checkbox checked>Singtime -> Effective Date</a-checkbox>
-    - <a-checkbox checked>SubBuilding -> Zone</a-checkbox>
-  - page 3
-    - <a-checkbox checked>Add icon “?”</a-checkbox>
-    - <a-checkbox checked><Badge text="3-22"/> icon “?” 太大了，缩小一个字号</a-checkbox>
-    - <a-checkbox checked>Add New -> New meter</a-checkbox>
-    - <a-checkbox checked>EBuilding -> Building</a-checkbox>
-    - <a-checkbox checked>Meter -> Meter ID</a-checkbox>
-    - <a-checkbox checked>下拉菜单顺序</a-checkbox>
-  - page 4
-    - <a-checkbox checked>Add icon “?”</a-checkbox>
-    - <a-checkbox checked>Category reorder</a-checkbox>
+## 重算 Ratio
+<img :src="$withBase('/img/00-08.png')" alt="list">
 
-  - page 5
-    - <a-checkbox checked>回到电表管理 -> Back</a-checkbox>
-    - <a-checkbox checked>Effective -> Recalculation Start Date</a-checkbox>
-    - <a-checkbox checked>Time -> Task Creation Date</a-checkbox>
-    - <a-checkbox checked>Task's Historys -> Task List</a-checkbox>
-    - <a-checkbox checked>Display date&time</a-checkbox>
-    - <a-checkbox checked>通知 -> Notification</a-checkbox>
-    - <a-checkbox checked>状态标签</a-checkbox>
-  - page 6
-    - <a-checkbox checked>侧边导航换三个自定义图标</a-checkbox>
-      
-- <a-checkbox checked>Download excel 按钮;</a-checkbox>
-  <img :src="$withBase('/img/c0-01.jpg')" alt="list">
+## 重算 Chiller
+<img :src="$withBase('/img/00-09.png')" alt="list">
 
-## 问题
-### meter
-- 1. DEH_DEH-CH5: 5月 第三个表是估值，但是第一个表没有 dataloss
-- 2. DEH_DEH-PM23: 5/20 ~ 5/22
-- 3. 重复计算的问题
+## 用户操作
+下面通过重算电表电量的示例演示操作步骤，修改其它数据与修改电量的步骤基本一致
+1. 根据搜索条件批量查找数据
 
-### chiller
-- 1. 第一个表格 Latest available date 是 pp txt 文档的时间， tp cp excel, her
-- 2. 第二个表格 漏掉了
-- 3. 所有的报错
+<img :src="$withBase('/img/00-00.png')" alt="list">
+
+2. 下载到 CSV 文件,
+
+<img :src="$withBase('/img/00-04.png')" alt="list">
+
+3. 在 CSV 文件中修改数值
+
+<img :src="$withBase('/img/00-03.jpg')" alt="list">
+
+4. 上传修改后的 CSV 文件
+
+<img :src="$withBase('/img/00-05.png')" alt="list">
+
+5. 添加到重算任务
+
+<img :src="$withBase('/img/00-06.png')" alt="list">
+
+6. 查看任务列表
+
+<img :src="$withBase('/img/00-07.png')" alt="list">
+
+7. 可以 Download Excel 报表查看每个任务的详情

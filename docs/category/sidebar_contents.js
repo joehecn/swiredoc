@@ -1,5 +1,6 @@
 module.exports = [
   '/category/',
+  'article-0',
   'article-1',
   'article-2',
   'article-3',
